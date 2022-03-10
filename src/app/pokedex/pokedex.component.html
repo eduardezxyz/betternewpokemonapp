@@ -1,0 +1,10 @@
+<div class="card" style="width: 18rem;" *ngFor="let pokemon of pokemons">
+    <img src="../../assets/squirtle.png" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">
+            <a class="" style="text-decoration:none" routerLink="pokemon/{{pokemon.name}}">
+                <p class="text-capitalize text-dark text-center">{{pokemon.name}}</p>
+            </a>
+        </h5>
+    </div>
+</div>
