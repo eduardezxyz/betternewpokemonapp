@@ -1,10 +1,13 @@
-<div class="card m-4 p-1" style="width: 20rem; max-width: 100%; background:skyblue;">
-    <img src="../../assets/squirtle.png" class="card-img-top" alt="...">
+<div class="card m-4 p-0" style="width: 20rem; max-width: 100%; background:skyblue;">
+    <img src={{pokeSingle.sprites.front_default}} class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title">{{pokeName}} {{pokeSmolDesc}}</h5>
-        <p class="card-text">Type: {{pokeType}}</p>
-        <p class="card-text">Height: {{pokeHeight}}</p>
-        <p class="card-text">Weight: {{pokeWeight}}</p>
-        <p class="card-text">Description: {{pokeDesc}}</p>
+        <h5 class="text-capitalize text-dark">{{pokeSingle.name}}</h5>
+        <p class="card-text">Id: {{pokeSingle.id}}</p>
+        <p class="card-text text-capitalize">Type: {{pokeType2}}</p>
+        <p class="card-text">Height: {{pokeSingle.height}}</p>
+        <p class="card-text">Weight: {{pokeSingle.weight}}kg</p>
+        <p class="card-text">Abilities: {{pokeSingle.abilities[0].ability.name}}</p>
     </div>
 </div>
+<!-- <a routerLink="../../../pageone">Lets go to pageone component</a> -->
+<!-- The piece of code above is taken from the pokemon.component.ts file and the poke.service.ts file to get the certain pokemon (Charizards) pokedex entry number which in this instance is 6 -->

@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PageoneComponent } from './pageone/pageone.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonComponent,
-    PokedexComponent
+    PokedexComponent,
+    PageoneComponent
   ],
   imports: [
     BrowserModule,

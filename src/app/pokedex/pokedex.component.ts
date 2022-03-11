@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { parentListResults, pokemonParentList } from '../pokemon';
+import { parentListResults } from '../pokemon';
 import { PokeService } from '../poke.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class PokedexComponent implements OnInit {
   constructor(private $pokeService: PokeService) { }
 
   ngOnInit(): void {
-    this.getPokesList();
+    this.getPokesList(); // calls the function to get the different information the pokemon has from the API.
   }
 
   getPokesList(): void {
