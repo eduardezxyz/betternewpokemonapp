@@ -16,6 +16,10 @@ export class PokeService {
     return this.http.get<pokemonParentList>(this.URL);
   }
 
+  getPokeListwithID(): Observable<pokemonParentList>{
+    return this.http.get<pokemonParentList>(this.URL);
+  }
+
   getPokemonSingle(pokeName: string): Observable<pokeApi> {// a function to get a string to add to the url so we can get the actual pokemon we want with its different info's.
     return this.http.get<pokeApi>("https://pokeapi.co/api/v2/pokemon/" + pokeName)// uses a http.get to get the information of the certain pokemon in the api.
       .pipe(map(result => { // we use a pipe to combine multiple Rxjs operators to compose asynchronous system (map and get for this instance).
@@ -31,9 +35,10 @@ export class PokeService {
         pokeSingle.sprites = {
           front_default: result.sprites.front_default
         }
-        pokeSingle.height = result.height;
+        pokeSingle.height = result.height/10;
         pokeSingle.abilities = result.abilities;
         pokeSingle.stats = result.stats;
+        pokeSingle.moves = result.moves;
 
         this.$pokeSingle.next(pokeSingle); // we are feeding the pokeSingle instance value to the observable 
 

@@ -6,6 +6,8 @@ export interface pokemonParentList{ // gets the api and gets the number of pokem
 export interface parentListResults{ // stores the pokemons name and url of its different info's
     name: string;
     url: string;
+    id?: number;
+    front_default?: string;
 }
 
 export class pokeApi {
@@ -20,7 +22,7 @@ export class pokeApi {
     height: number;
     abilities: Array<Ability>;
     stats: Array<Stat>;
-
+    moves: Array<Moves>;
     constructor() {
         this.id = 0;
         this.base_experience = 0;
@@ -33,6 +35,13 @@ export class pokeApi {
         this.height = 0;
         this.abilities = [];
         this.stats = [];
+        this.moves = [];
+    }
+}
+
+export interface Moves {
+    move: {
+        name: string;
     }
 }
 

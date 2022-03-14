@@ -1,9 +1,12 @@
-<div class="card" style="width: 18rem;" *ngFor="let pokemon of pokemons">
-    <img src="../../assets/squirtle.png" class="card-img-top" alt="...">
+<div class="card text-capitalize text-dark text-center" style="width: 18rem;" *ngFor="let pokemon of pokemons">
+    <img src={{pokemon.front_default}} class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title">
-            <a class="" style="text-decoration:none" routerLink="../pokemon/{{pokemon.name}}">
-                <p class="text-capitalize text-dark text-center">{{pokemon.name}}</p>
+        <h5 class="card-title"> {{pokemon.name}}
+            <a class="text-dark" style="text-decoration:none" routerLink="../pokemon/{{pokemon.name}}">
+                <p class="card-text">#{{pokemon.id}}</p>
+                <!-- <div class="" *ngFor="let pokeId of pokeIds">
+                    <p class="text-capitalize text-dark text-center">{{pokemon.id}}</p>
+                </div> -->
             </a>
         </h5>
     </div>
