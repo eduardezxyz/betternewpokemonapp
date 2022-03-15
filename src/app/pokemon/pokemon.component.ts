@@ -3,6 +3,9 @@ import { Subject } from 'rxjs';
 import { PokeService } from '../poke.service';
 import { Moves, pokeApi } from '../pokemon';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DxButtonModule } from 'devextreme-angular';
+import notify from 'devextreme/ui/notify';
+import { DxTagBoxModule, DxTemplateModule } from 'devextreme-angular';
 
 @Component({
   selector: 'app-pokemon',
@@ -13,7 +16,7 @@ export class PokemonComponent implements OnInit, OnDestroy {
 
   constructor(private pokeService: PokeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) { } // need this constructor to subsribe to the getPokemonSingle observable in the ngOnInit function
 
   pokeSingle: pokeApi = new pokeApi(); // new variable to be used in getPokemonSingle from the instance of pokeApi
@@ -25,10 +28,20 @@ export class PokemonComponent implements OnInit, OnDestroy {
   pokeId: string = '';
   pokeStats: string = '';
   pokeStatsNum: number = 0;
+  capitalize = (text: any) => text.charAt(0).toUpperCase() + text.slice(1);
+  simpleProducts: string[] = [];
+  editableProducts: string[] = [];
+  dataSource: any;
 
   ngOnInit(): void {
     this.getPokemonSingle();// calls on the function in the file
   }
+
+  click = (e: any) => {
+    const buttonText = e.component.option('text');
+    notify(`The ${this.capitalize(buttonText)} button was clicked`);
+  };
+
 
   // a function to subscribe to the observable in the service file.
   getPokemonSingle(): void {
@@ -66,7 +79,7 @@ export class PokemonComponent implements OnInit, OnDestroy {
       }
 
       for (let i = 0; i < this.pokeSingle.moves.length; i++){
-        console.log(this.pokeMoves[i] = this.pokeSingle.moves[i].move.name);
+        this.pokeMoves[i] = this.pokeSingle.moves[i].move.name;
       }
       // console.log(this.pokeMoves);
     }, (error) => { // send an error if the pokemon name isnt in the database and takes you back to the pokedex component

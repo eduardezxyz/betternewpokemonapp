@@ -6,6 +6,8 @@ import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PageoneComponent } from './pageone/pageone.component';
+import { DxButtonModule, DxTagBoxModule, DxTemplateModule } from 'devextreme-angular';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,10 @@ import { PageoneComponent } from './pageone/pageone.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    DxButtonModule,    
+    DxTemplateModule,
+    DxTagBoxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
