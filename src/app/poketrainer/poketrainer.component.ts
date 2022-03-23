@@ -11,14 +11,11 @@ import DataService from 'src/services/odata/data-service';
 export class PoketrainerComponent implements OnInit {
 
   PokeTrainerDS!: any;
-
-  constructor(private odataservice: DataService) { 
-
-  }
+  constructor(private odataservice: DataService) {}
 
   ngOnInit(): void {
     this.PokeTrainerDS = {
-      store: {type: 'odata', version: 4, url:  environment.apiUri + '/odata/PokeTrainers', key: 'Id'} 
+      store: {type: 'odata', version: 4, url:  environment.apiUri + '/odata/Pokedetails', key: 'PokedexEntry'} 
       // filter: ['ProducerId','=',this.producerId]
     };
   }

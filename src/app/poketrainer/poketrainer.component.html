@@ -1,5 +1,6 @@
 <p>poketrainer works!</p>
-<dx-data-grid
-      id="gridContainer"
-      [dataSource]="PokeTrainerDS">
+<dx-data-grid id="gridContainer" [dataSource]="PokeTrainerDS" [allowColumnReordering]="true">
+      <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-paging [pageSize]="10"></dxo-paging>
 </dx-data-grid>
