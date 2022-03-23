@@ -1,11 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { min, Subject } from 'rxjs';
 import { PokeService } from '../poke.service';
-import { Moves, pokeApi } from '../pokemon';
+import { pokeApi } from '../pokemon';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DxButtonModule } from 'devextreme-angular';
-import notify from 'devextreme/ui/notify';
-import { DxTagBoxModule, DxTemplateModule } from 'devextreme-angular';
 
 @Component({
   selector: 'app-pokemon',
@@ -21,36 +18,32 @@ export class PokemonComponent implements OnInit, OnDestroy {
 
   pokeSingle: pokeApi = new pokeApi(); // new variable to be used in getPokemonSingle from the instance of pokeApi
   pokeMoves: string[] = [];
+  fourMoves: string[] = [];
   pokeNameUrl: any;
   pokeType2: string = '';
   pokeAbilities: string = '';
-  counter: number = 0;
   pokeId: string = '';
   pokeStats: string = '';
   pokeStatsNum: number = 0;
-  capitalize = (text: any) => text.charAt(0).toUpperCase() + text.slice(1);
-  simpleProducts: string[] = [];
-  editableProducts: string[] = [];
-  dataSource: any;
+  isVisibleMore: boolean = false;
+  maxItems: number = 4;
+  bgcolor: string = 'green';
+  styles: any;
 
   ngOnInit(): void {
     this.getPokemonSingle();// calls on the function in the file
   }
 
-  click = (e: any) => {
-    const buttonText = e.component.option('text');
-    notify(`The ${this.capitalize(buttonText)} button was clicked`);
-  };
-
-
   // a function to subscribe to the observable in the service file.
   getPokemonSingle(): void {
     this.pokeNameUrl = this.route.snapshot.paramMap.get('name');
-    // this.pokeService.$pokeSingle.subscribe(pokeSingle$ => {
+
     this.pokeService.getPokemonSingle(this.pokeNameUrl).subscribe(pokeSingle$ => {
+
       this.pokeSingle = pokeSingle$;
-      // this.pokeMoves = this.pokeSingle.moves;
+      this.applyStyles();
       this.pokeId = this.pokeSingle.id + "";
+
       if (this.pokeSingle.types.length == 1) {
         this.pokeType2 = this.pokeSingle.types[0].type.name;
       }
@@ -63,12 +56,11 @@ export class PokemonComponent implements OnInit, OnDestroy {
         this.pokeAbilities = this.pokeSingle.abilities[0].ability.name;
       }
       else {
-        for (this.counter; this.counter < this.pokeSingle.abilities.length; this.counter++)
+        for (let i = 0; i < this.pokeSingle.abilities.length; i++)
           if (this.pokeAbilities.length == 0)
-            this.pokeAbilities = this.pokeSingle.abilities[this.counter].ability.name;
+            this.pokeAbilities = this.pokeSingle.abilities[i].ability.name;
           else
-            this.pokeAbilities = this.pokeAbilities + " | " + this.pokeSingle.abilities[this.counter].ability.name;
-        this.counter = 0;
+            this.pokeAbilities = this.pokeAbilities + " | " + this.pokeSingle.abilities[i].ability.name;
       }
 
       if (this.pokeId.length == 1) {
@@ -78,15 +70,32 @@ export class PokemonComponent implements OnInit, OnDestroy {
         this.pokeId = "0" + this.pokeId;
       }
 
-      for (let i = 0; i < this.pokeSingle.moves.length; i++){
+      for (let i = 0; i < this.pokeSingle.moves.length; i++) {
         this.pokeMoves[i] = this.pokeSingle.moves[i].move.name;
       }
-      // console.log(this.pokeMoves);
+
     }, (error) => { // send an error if the pokemon name isnt in the database and takes you back to the pokedex component
       this.router.navigate(['/pokedex']);
       console.log('An unexpected error occured');
       console.log(error);
     }); // Subscribe to the getPokemonSingle observable in our poke.service file); // Subscribe to the getPokemonSingle observable in our poke.service file
+  }
+
+  onValueChanged(e: any) {
+    if (e.value.length > this.maxItems) {
+      let newValue = e.value.slice(0, this.maxItems);
+      e.component.option("value", newValue);
+      this.isVisibleMore = true;
+    }
+  }
+
+  applyStyles() {
+    console.log(this.pokeSingle);
+    const fire = 'fire';
+    if (this.pokeSingle.types[0].type.name === fire)
+      this.styles = { 'background': 'red' };
+
+    return this.styles;
   }
 
   // creating a subject called onDestroy to use in the ngOnDestroy function
@@ -98,11 +107,4 @@ export class PokemonComponent implements OnInit, OnDestroy {
     this.onDestroy$.complete();
   }
 
-  pokeName = "Squirtle";
-  pokeSmolDesc = "(Tiny Turtle Pokemon)"
-  pokeNum = "7";
-  pokeType = "Water";
-  pokeHeight = "0.5m";
-  pokeWeight = "9.0kg";
-  pokeDesc = "It shelters itself in its shell, then strikes back with spouts of water at every opportunity.";
 }

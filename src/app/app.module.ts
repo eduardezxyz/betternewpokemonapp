@@ -5,16 +5,14 @@ import { AppComponent } from './app.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PageoneComponent } from './pageone/pageone.component';
-import { DxButtonModule, DxTagBoxModule, DxTemplateModule } from 'devextreme-angular';
+import { DxButtonModule, DxTagBoxModule, DxTemplateModule, DxTooltipModule } from 'devextreme-angular';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonComponent,
-    PokedexComponent,
-    PageoneComponent
+    PokedexComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +20,8 @@ import { DxButtonModule, DxTagBoxModule, DxTemplateModule } from 'devextreme-ang
     HttpClientModule,
     DxButtonModule,    
     DxTemplateModule,
-    DxTagBoxModule
+    DxTagBoxModule,
+    DxTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

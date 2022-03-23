@@ -18,11 +18,6 @@ export class PokedexComponent implements OnInit {
     this.getPokesList(); // calls the function to get the different information the pokemon has from the API.
   }
 
-  // getPokesList(): void {
-  //   this.$pokeService.getPokeList()//subscribe to the observable from function getPokeList() in the file poke.service.ts
-  //     .subscribe($pokemons => this.pokemons = $pokemons.results)
-  // }
-
   getPokesList(): void {
     this.$pokeService.getPokeList()//subscribe to the observable from function getPokeList() in the file poke.service.ts
       .subscribe($pokemons => {
