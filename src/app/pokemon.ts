@@ -10,6 +10,37 @@ export interface parentListResults{ // stores the pokemons name and url of its d
     front_default?: string;
 }
 
+export interface partyParentList{
+    value: parentPartyList[];
+}
+
+export interface parentPartyList{
+    TrainerId: number;
+    MyPokeId: number;
+}
+
+export interface myPokeParentList{
+    value: parentMyPokeList[];
+}
+
+export interface parentMyPokeList{
+    Id: number;
+    PokedexEntry: number;
+    Nickname:string;
+    Hp: number;
+    PokeLvl: number;
+    Sprite: string;
+}
+
+export interface pokeTrainerParentList {
+    value: parentPokeTrainerList[];
+}
+
+export interface parentPokeTrainerList {
+    Id: number;
+    TrainerName: string;
+}
+
 export class pokeApi {
     id: number;
     base_experience: number;

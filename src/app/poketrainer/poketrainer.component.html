@@ -1,6 +1,42 @@
-<p>poketrainer works!</p>
-<dx-data-grid id="gridContainer" [dataSource]="PokeTrainerDS" [allowColumnReordering]="true">
-      <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
-      <dxo-group-panel [visible]="true"></dxo-group-panel>
-      <dxo-paging [pageSize]="10"></dxo-paging>
-</dx-data-grid>
+<!-- <div id="data-grid-demo">
+      <dx-data-grid id="gridContainer" [dataSource]="PokemonDS" [allowColumnReordering]="true"
+            [allowColumnResizing]="true" [columnAutoWidth]="true" [showBorders]="true"
+            (onEditorPreparing)="onEditorPreparing($event)">
+            <dxo-paging [enabled]="false"></dxo-paging>
+            <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+            <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+            <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
+            <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
+                  <dxo-popup type="mypoke" title="Pokemon Info" [showTitle]="true" [width]="700" [height]="525">
+                  </dxo-popup>
+            </dxo-editing>
+            <dxi-column dataField="Id"></dxi-column>
+            <dxi-column dataField="TrainerName"></dxi-column>
+            <dxi-button hint="Clone" icon="copy"></dxi-button>
+            <dxi-column dataField="PokeName"></dxi-column>
+            <dxi-column dataField="HeightMeters"></dxi-column>
+            <dxi-column dataField="WeightKg"></dxi-column>
+            <dxi-column dataField="PokeType1Id">
+                  <dxo-lookup [dataSource]="PokemonDS" valueExpr="Id" displayExpr="PokeTypeName">
+                  </dxo-lookup>
+            </dxi-column>
+            <dxi-column dataField="PokeType2Id">
+                  <dxo-lookup [dataSource]="PokemonDS" valueExpr="Id" displayExpr="PokeTypeName">
+                  </dxo-lookup>
+            </dxi-column>
+            <dxi-column dataField="PokedexEntry"></dxi-column>
+      </dx-data-grid>
+</div> -->
+
+<!-- <div class="card text-capitalize text-dark text-center" style="width: 18rem;" *ngFor="let poketrainer of PokeTrainers">
+      <a class="text-dark" style="text-decoration:none" routerLink="../poketrainer/{{poketrainer.Id}}">
+            <div class="card-body">
+                  <h5 class="card-title"> 
+                        {{poketrainer.TrainerName}}
+                  </h5>
+                  <a class="text-dark" style="text-decoration:none">
+                        <p class="card-text">Trainer id: {{poketrainer.Id}}</p>
+                  </a>
+            </div>
+      </a>
+</div> -->

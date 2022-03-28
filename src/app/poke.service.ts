@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { pokeApi, pokemonParentList } from './pokemon';
+import { pokeApi, pokemonParentList, partyParentList, myPokeParentList, pokeTrainerParentList } from './pokemon';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
 @Injectable({
@@ -9,6 +9,9 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
 export class PokeService {
 
   private URL = "https://pokeapi.co/api/v2/pokemon";
+  private PokePartyURL = "http://localhost:5011/odata/PokeParties";
+  private MyPokeURL = "http://localhost:5011/odata/MyPokemons";
+  private PokeTrainerURL = "http://localhost:5011/odata/PokeTrainers"
   public $pokeSingle = new BehaviorSubject<pokeApi>(new pokeApi());
   constructor(private http: HttpClient) { }
 
@@ -16,11 +19,23 @@ export class PokeService {
     return this.http.get<pokemonParentList>(this.URL);
   }
 
+  getPokeParty(): Observable<partyParentList> {
+    return this.http.get<partyParentList>(this.PokePartyURL);
+  }
+
+  getMyPoke(): Observable<myPokeParentList> {
+    return this.http.get<myPokeParentList>(this.MyPokeURL);
+  }
+
   getPokeListwithID(): Observable<pokemonParentList>{
     return this.http.get<pokemonParentList>(this.URL);
   }
 
-  getPokemonSingle(pokeName: string): Observable<pokeApi> {// a function to get a string to add to the url so we can get the actual pokemon we want with its different info's.
+  getPokeTrainer(): Observable<pokeTrainerParentList>{
+    return this.http.get<pokeTrainerParentList>(this.PokeTrainerURL);
+  }
+
+  getPokemonSingle(pokeName: any): Observable<pokeApi> {// a function to get a string to add to the url so we can get the actual pokemon we want with its different info's.
     return this.http.get<pokeApi>("https://pokeapi.co/api/v2/pokemon/" + pokeName)// uses a http.get to get the information of the certain pokemon in the api.
       .pipe(map(result => { // we use a pipe to combine multiple Rxjs operators to compose asynchronous system (map and get for this instance).
         

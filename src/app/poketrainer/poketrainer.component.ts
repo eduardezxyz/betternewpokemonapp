@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import DataSource from 'devextreme/data/data_source';
+import { PokeService } from '../poke.service';
+import 'devextreme/data/odata/store';
+import { parentPokeTrainerList } from '../pokemon';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import DataService from 'src/services/odata/data-service';
 
 @Component({
   selector: 'app-poketrainer',
@@ -10,14 +12,40 @@ import DataService from 'src/services/odata/data-service';
 })
 export class PoketrainerComponent implements OnInit {
 
-  PokeTrainerDS!: any;
-  constructor(private odataservice: DataService) {}
+  PokemonDS!: any;
+  PokeTrainers: parentPokeTrainerList[] = [];
+  constructor(private $pokeService: PokeService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
+  trainerId: any;
 
   ngOnInit(): void {
-    this.PokeTrainerDS = {
-      store: {type: 'odata', version: 4, url:  environment.apiUri + '/odata/Pokedetails', key: 'PokedexEntry'} 
+    this.PokemonDS = {
+      store: { type: 'odata', version: 4, url: environment.apiUri + '/odata/Pokemons', key: 'PokedexEntry' }
       // filter: ['ProducerId','=',this.producerId]
     };
+    // this.getPokeTrainer();
+  }
+
+  getPokeTrainer(): void {
+    this.$pokeService.getPokeTrainer().subscribe(pokeparty => {
+      this.PokeTrainers = pokeparty.value;
+    });
+  }
+
+  onEditorPreparing(e: any) {
+    //target data Cells and the dataField
+    if (e.parentType === "dataRow" && e.dataField === "PokedexEntry") {
+
+      if (e.row.isNewRow) {
+        e.editorOptions.disabled = false; //enabled only when new record
+      }
+      else {
+        e.editorOptions.disabled = true; //disabled when existing
+      }
+    }
   }
 
 }
+

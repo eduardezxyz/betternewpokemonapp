@@ -5,15 +5,17 @@ import { AppComponent } from './app.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DxButtonModule, DxDataGridModule, DxTagBoxModule, DxTemplateModule, DxTooltipModule } from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule, DxPopupModule, DxTagBoxModule, DxTemplateModule, DxTooltipModule } from 'devextreme-angular';
 import { PoketrainerComponent } from './poketrainer/poketrainer.component';
+import { MypokemonComponent } from './mypokemon/mypokemon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonComponent,
     PokedexComponent,
-    PoketrainerComponent
+    PoketrainerComponent,
+    MypokemonComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { PoketrainerComponent } from './poketrainer/poketrainer.component';
     DxTemplateModule,
     DxTagBoxModule,
     DxTooltipModule,
-    DxDataGridModule
+    DxDataGridModule,
+    DxPopupModule
   ],
   providers: [],
   bootstrap: [AppComponent]
