@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'pokemon/:name', component: PokemonComponent},
   { path: 'poketrainer', component: PoketrainerComponent},
   { path: 'poketrainer/:Id', component: MypokemonComponent},
-  { path: 'mypokemon', component: MypokemonComponent}
 ];
 
 @NgModule({

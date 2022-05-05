@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeService } from '../poke.service';
-import { parentMyPokeList, parentPartyList, pokeApi } from '../pokemon';
-import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
+import { parentMyPokeList, parentPartyList } from '../pokemon';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-mypokemon',
@@ -21,14 +20,9 @@ export class MypokemonComponent implements OnInit {
   constructor(
     private $pokeService: PokeService,
     private route: ActivatedRoute,
-    private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.PokemonDS = {
-      store: { type: 'odata', version: 4, url: environment.apiUri + '/odata/Pokemons', key: 'PokedexEntry' }
-      // filter: ['ProducerId','=',this.producerId]
-    };
     this.getPokeParty();
     this.getMyPoke();
   }
