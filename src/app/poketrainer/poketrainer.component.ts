@@ -25,7 +25,7 @@ export class PoketrainerComponent implements OnInit {
       store: { type: 'odata', version: 4, url: environment.apiUri + '/odata/Pokemons', key: 'PokedexEntry' }
       // filter: ['ProducerId','=',this.producerId]
     };
-    // this.getPokeTrainer();
+    this.getPokeTrainer();
   }
 
   getPokeTrainer(): void {

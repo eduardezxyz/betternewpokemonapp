@@ -25,6 +25,10 @@ export class MypokemonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.PokemonDS = {
+      store: { type: 'odata', version: 4, url: environment.apiUri + '/odata/Pokemons', key: 'PokedexEntry' }
+      // filter: ['ProducerId','=',this.producerId]
+    };
     this.getPokeParty();
     this.getMyPoke();
   }
@@ -59,6 +63,7 @@ export class MypokemonComponent implements OnInit {
     this.$pokeService.getPokemonSingle(Id).subscribe($pokeSingle => {
       this.MyPoke[index].Sprite = $pokeSingle.sprites.front_default;
       return;
-    })
+    });
   }
+
 }
