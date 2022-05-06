@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { min, Subject } from 'rxjs';
-import { PokeService } from '../poke.service';
-import { pokeApi } from '../pokemon';
+import { PokeService } from '../../poke.service';
+import { pokeApi } from '../../pokemon';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

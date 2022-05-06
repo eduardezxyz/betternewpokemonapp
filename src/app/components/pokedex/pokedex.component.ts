@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { parentListResults } from '../pokemon';
-import { PokeService } from '../poke.service';
+import { parentListResults } from '../../pokemon';
+import { PokeService } from '../../poke.service';
 
 @Component({
   selector: 'app-pokedex',

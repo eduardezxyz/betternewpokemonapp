@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PokeService } from '../poke.service';
+import { PokeService } from '../../poke.service';
 import 'devextreme/data/odata/store';
-import { parentPokeTrainerList } from '../pokemon';
+import { parentPokeTrainerList } from '../../pokemon';
 
 @Component({
   selector: 'app-poketrainer',

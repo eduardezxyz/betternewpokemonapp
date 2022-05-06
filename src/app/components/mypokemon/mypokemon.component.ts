@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PokeService } from '../poke.service';
-import { parentMyPokeList, parentPartyList } from '../pokemon';
+import { PokeService } from '../../poke.service';
+import { parentMyPokeList, parentPartyList } from '../../pokemon';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
