@@ -20,7 +20,7 @@ export class PokemonComponent implements OnInit, OnDestroy {
   pokeMoves: string[] = [];
   fourMoves: string[] = [];
   pokeNameUrl: any;
-  pokeType2: string = '';
+  pokeType: string = '';
   pokeAbilities: string = '';
   pokeId: string = '';
   pokeStats: string = '';
@@ -40,18 +40,22 @@ export class PokemonComponent implements OnInit, OnDestroy {
 
     this.pokeService.getPokemonSingle(this.pokeNameUrl).subscribe(pokeSingle$ => {
 
+      // Stores the single pokemon in variable pokeSingle
       this.pokeSingle = pokeSingle$;
-      this.applyStyles();
+
+      // Stores the pokemon Id in a single variable
       this.pokeId = this.pokeSingle.id + "";
 
+      // Determines if the pokemon only has 1 or 2 types and stores it to a variable for better formatting
       if (this.pokeSingle.types.length == 1) {
-        this.pokeType2 = this.pokeSingle.types[0].type.name;
+        this.pokeType = this.pokeSingle.types[0].type.name;
       }
       else {
-        this.pokeType2 = this.pokeSingle.types[0].type.name;
-        this.pokeType2 = this.pokeType2 + " | " + this.pokeSingle.types[1].type.name;
+        this.pokeType = this.pokeSingle.types[0].type.name;
+        this.pokeType = this.pokeType + " | " + this.pokeSingle.types[1].type.name;
       }
 
+      // Determines to see how many abilities a pokemon can possibly have
       if (this.pokeSingle.abilities.length == 1) {
         this.pokeAbilities = this.pokeSingle.abilities[0].ability.name;
       }
@@ -63,6 +67,7 @@ export class PokemonComponent implements OnInit, OnDestroy {
             this.pokeAbilities = this.pokeAbilities + " | " + this.pokeSingle.abilities[i].ability.name;
       }
 
+      // if statement for better formatting
       if (this.pokeId.length == 1) {
         this.pokeId = "00" + this.pokeId;
       }
@@ -70,6 +75,7 @@ export class PokemonComponent implements OnInit, OnDestroy {
         this.pokeId = "0" + this.pokeId;
       }
 
+      // Stores all the possible moves that a pokemon can have in an array.
       for (let i = 0; i < this.pokeSingle.moves.length; i++) {
         this.pokeMoves[i] = this.pokeSingle.moves[i].move.name;
       }
@@ -81,21 +87,13 @@ export class PokemonComponent implements OnInit, OnDestroy {
     }); // Subscribe to the getPokemonSingle observable in our poke.service file); // Subscribe to the getPokemonSingle observable in our poke.service file
   }
 
+  // function to limit the amount of moves a pokemon has
   onValueChanged(e: any) {
     if (e.value.length > this.maxItems) {
       let newValue = e.value.slice(0, this.maxItems);
       e.component.option("value", newValue);
       this.isVisibleMore = true;
     }
-  }
-
-  applyStyles() {
-    console.log(this.pokeSingle);
-    const fire = 'fire';
-    if (this.pokeSingle.types[0].type.name === fire)
-      this.styles = { 'background': 'red' };
-
-    return this.styles;
   }
 
   // creating a subject called onDestroy to use in the ngOnDestroy function

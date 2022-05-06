@@ -27,6 +27,7 @@ export class MypokemonComponent implements OnInit {
     this.getMyPoke();
   }
 
+  // gets the pokemon trainers pokemon party.
   getPokeParty(): void {
     this.pokePartyURL = this.route.snapshot.paramMap.get('Id');
     this.$pokeService.getPokeParty().subscribe(pokeparty => {
@@ -39,6 +40,7 @@ export class MypokemonComponent implements OnInit {
     });
   }
 
+  // get the actual details of each pokemon in the pokemon party.
   getMyPoke(): void {
     this.$pokeService.getMyPoke().subscribe(myPoke => {
       for (let j = 0; j < this.PokeParty.length; j++) {
@@ -53,6 +55,7 @@ export class MypokemonComponent implements OnInit {
     });
   }
 
+  // Gets the pokedex entry from our own database and uses that to get the actual pokemon sprite for the pokemon
   getPokeSprite(Id: number, index: number): void {
     this.$pokeService.getPokemonSingle(Id).subscribe($pokeSingle => {
       this.MyPoke[index].Sprite = $pokeSingle.sprites.front_default;

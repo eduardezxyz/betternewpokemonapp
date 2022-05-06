@@ -5,11 +5,10 @@
 </style>
 <div class="card text-capitalize text-dark" style="width: 18rem;">
     <img src={{pokeSingle.sprites.front_default}} class="card-img-top pokemon-background" >
-    <!-- [ngStyle]="applyStyles()"> -->
     <div class="card-body text-capitalize">
         <h5 class="text-dark">{{pokeSingle.name}}</h5>
         <p class="card-text">#{{pokeId}}</p>
-        <p class="card-text">Type: {{pokeType2}}</p>
+        <p class="card-text">Type: {{pokeType}}</p>
         <p class="card-text">Height: {{pokeSingle.height}}m</p>
         <p class="card-text">Weight: {{pokeSingle.weight}}kg</p>
         <p class="card-text">Abilities: {{pokeAbilities}}</p>
@@ -31,21 +30,3 @@
         </div>
     </div>
 </div>
-
-<!-- <div class="buttons-column">
-    <div class="column-header"> Success </div>
-    <div>
-        <dx-button stylingMode="contained" text="Contained" type="success" [width]="120" (onClick)="click($event)">
-        </dx-button>
-    </div>
-    <div>
-        <dx-button stylingMode="outlined" text="Outlined" type="success" [width]="120" (onClick)="click($event)">
-        </dx-button>
-    </div>
-    <div>
-        <dx-button stylingMode="text" text="Text" type="success" [width]="120" (onClick)="click($event)">
-        </dx-button>
-    </div>
-</div> -->
-<!-- <a routerLink="../../../pageone">Lets go to pageone component</a> -->
-<!-- The piece of code above is taken from the pokemon.component.ts file and the poke.service.ts file to get the certain pokemon (Charizards) pokedex entry number which in this instance is 6 -->
