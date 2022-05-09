@@ -1,17 +1,17 @@
 <div class="card text-capitalize text-dark text-center" style="width: 18rem;" *ngFor="let mypoke of MyPoke">
+  <a class="text-dark" style="text-decoration:none">
+    <img src={{mypoke.Sprite}} class="card-img-top pokemon-background">
+    <hr>
+    <div class="card-body">
+      <h5 class="card-title">
+        Nickname: {{mypoke.Nickname}}
+      </h5>
       <a class="text-dark" style="text-decoration:none">
-            <img src={{mypoke.Sprite}} class="card-img-top pokemon-background" >
-            <div class="card-body">
-                  <h5 class="card-title">
-                        Nickname: {{mypoke.Nickname}}
-                  </h5>
-                  <a class="text-dark" style="text-decoration:none">
-                        <p class="card-text">Health Points: {{mypoke.Hp}}</p>
-                  </a>
-                  <a class="text-dark" style="text-decoration:none">
-                        <p class="card-text">Level: {{mypoke.PokeLvl}}</p>
-                  </a>
-                  <button type="button" class="btn btn-secondary btn-sm">Delete From Party</button>
-            </div>
+        <p class="card-text">Health Points: {{mypoke.Hp}}</p>
       </a>
+      <a class="text-dark" style="text-decoration:none">
+        <p class="card-text">Level: {{mypoke.PokeLvl}}</p>
+      </a>
+    </div>
+  </a>
 </div>

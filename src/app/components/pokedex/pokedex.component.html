@@ -1,6 +1,7 @@
 <div class="card text-capitalize text-dark text-center" style="width: 18rem;" *ngFor="let pokemon of pokemons">
     <a class="text-dark" style="text-decoration:none" routerLink="../pokemon/{{pokemon.name}}">
         <img src={{pokemon.front_default}} class="card-img-top" alt="...">
+        <hr>
         <div class="card-body">
             <h5 class="card-title">
                 {{pokemon.name}}
