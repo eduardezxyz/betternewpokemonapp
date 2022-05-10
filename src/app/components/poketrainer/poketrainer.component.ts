@@ -27,18 +27,5 @@ export class PoketrainerComponent implements OnInit {
     });
   }
 
-  onEditorPreparing(e: any) {
-    //target data Cells and the dataField
-    if (e.parentType === "dataRow" && e.dataField === "PokedexEntry") {
-
-      if (e.row.isNewRow) {
-        e.editorOptions.disabled = false; //enabled only when new record
-      }
-      else {
-        e.editorOptions.disabled = true; //disabled when existing
-      }
-    }
-  }
-
 }
 
